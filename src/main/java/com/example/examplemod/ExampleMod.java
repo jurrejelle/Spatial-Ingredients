@@ -61,6 +61,16 @@ public class ExampleMod {
     }
 
     /**
+     * Create a ResourceLocation in the format "modid:path"
+     *
+     * @param path
+     * @return ResourceLocation with the namespace of your mod
+     */
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
+    }
+
+    /**
      * Create a material manager for your mod using GT's API.
      * You MUST have this if you have custom materials.
      * Remember to register them not to GT's namespace, but your own.
