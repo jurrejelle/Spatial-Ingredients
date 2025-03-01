@@ -33,9 +33,11 @@ public class ExampleMod {
 
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::clientSetup);
+
         modEventBus.addListener(this::addMaterialRegistries);
         modEventBus.addListener(this::addMaterials);
         modEventBus.addListener(this::modifyMaterials);
+
         modEventBus.addGenericListener(GTRecipeType.class, this::registerRecipeTypes);
         modEventBus.addGenericListener(MachineDefinition.class, this::registerMachines);
 
@@ -56,26 +58,47 @@ public class ExampleMod {
         LOGGER.info("Hey, we're on Minecraft version {}!", Minecraft.getInstance().getLaunchedVersion());
     }
 
-    // You MUST have this for custom materials.
-    // Remember to register them not to GT's namespace, but your own.
+    /**
+     * Create a material manager for your mod using GT's API.
+     * You MUST have this if you have custom materials.
+     * Remember to register them not to GT's namespace, but your own.
+     * @param event
+     */
     private void addMaterialRegistries(MaterialRegistryEvent event) {
         GTCEuAPI.materialManager.createRegistry(ExampleMod.MOD_ID);
     }
 
-    // As well as this.
+    /**
+     * You will also need this for registering custom materials
+     * Call init() from your Material class(es) here
+     * @param event
+     */
     private void addMaterials(MaterialEvent event) {
         // CustomMaterials.init();
     }
 
-    // This is optional, though.
+    /**
+     * (Optional) Used to modify pre-existing materials from GregTech
+     * @param event
+     */
     private void modifyMaterials(PostMaterialEvent event) {
         // CustomMaterials.modify();
     }
 
+    /**
+     * Used to register your own new RecipeTypes.
+     * Call init() from your RecipeType class(es) here
+     * @param event
+     */
     private void registerRecipeTypes(GTCEuAPI.RegisterEvent<ResourceLocation, GTRecipeType> event) {
         // CustomRecipeTypes.init();
     }
 
+    /**
+     * Used to register your own new RecipeTypes.
+     * Call init() from your Machine class(es) here
+     * @param event
+     */
     private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
         // CustomMachines.init();
     }
