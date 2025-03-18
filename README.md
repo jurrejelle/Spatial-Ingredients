@@ -15,7 +15,7 @@ Repositories for other addons:
 
 - [CosmicCore](https://github.com/Frontiers-PackForge/CosmicCore)
 - [Gregtech: Extended Chemistry Extended](https://github.com/jmoiron/Gregtech-Extended-Chemistry)
-- [Juiceycality](https://github.com/JuiceyBeans/Juiceycality)
+- [GCYLM](https://github.com/eve336/gcylm)
 - [Gregicality Rocketry](https://github.com/Argent-Matter/gcyr/)
 
 Additionally, you may be able to find help on the [GregTech CEu Discord](https://discord.gg/bWSWuYvURP)!
