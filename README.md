@@ -13,7 +13,7 @@ Unfortunately, there isn't any official documentation so far for making GregTech
 
 Repositories for other addons:
 
-- [CosmicCore](https://github.com/Frontiers-PackForge/CosmicCore)
+- [GT Community Additions](https://github.com/mordgren/GTCA)
 - [Gregtech: Extended Chemistry Extended](https://github.com/jmoiron/Gregtech-Extended-Chemistry)
 - [GCYLM](https://github.com/eve336/gcylm)
 - [Gregicality Rocketry](https://github.com/Argent-Matter/gcyr/)
