@@ -1,7 +1,7 @@
 # GregTech Addon Template
 ## Template for GregTech Modern addons on 1.20.1
 
- Original template by [screret](https://github.com/screret), updated by [JuiceyBeans](https://github.com/JuiceyBeans)
+ Original template by [screret](https://github.com/screret), maintained by [JuiceyBeans](https://github.com/JuiceyBeans)
 
 <hr>
 
