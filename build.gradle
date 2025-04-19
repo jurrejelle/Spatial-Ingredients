@@ -1,9 +1,20 @@
+buildscript {
+    repositories {
+        maven { url = 'https://repo.spongepowered.org/repository/maven-public/' }
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'org.spongepowered:mixingradle:0.7-SNAPSHOT'
+    }
+}
+
 plugins {
     id "idea"
     id "maven-publish"
     id 'net.minecraftforge.gradle' version '[6.0,6.2)'
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     id 'com.diffplug.spotless' version '7.0.2'
+    id 'org.spongepowered.mixin' version '0.7+'
 }
 
 def generatedResources = file("src/generated")
@@ -103,10 +114,14 @@ minecraft {
 }
 
 
+apply plugin: 'org.spongepowered.mixin'
 apply from: "$rootDir/gradle/scripts/spotless.gradle"
 
 dependencies {
     minecraft "net.minecraftforge:forge:${minecraft_version}-${forge_version}"
+
+    // Mixin
+    annotationProcessor "org.spongepowered:mixin:0.8.7:processor"
 
     // JEI, EMI, Jade
     compileOnly fg.deobf("mezz.jei:jei-${minecraft_version}-forge-api:${jei_version}")
@@ -127,6 +142,11 @@ dependencies {
     // lombok
     compileOnly 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
+}
+
+mixin {
+    add sourceSets.main, "${mod_id}.refmap.json"
+    config "${mod_id}.mixins.json"
 }
 
 tasks.named('processResources', ProcessResources).configure {
