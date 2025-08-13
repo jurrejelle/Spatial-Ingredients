@@ -66,10 +66,6 @@ repositories {
 		name = "TerraformersMC"
 		url = "https://maven.terraformersmc.com/"
 	}
-
-    maven {
-        url = "https://maven.architectury.dev"
-    }
     maven {
         url = "https://thedarkcolour.github.io/KotlinForForge/"
     }
