@@ -1,5 +1,8 @@
 package dev.jurrejelle.spatialingredients;
 
+import dev.jurrejelle.spatialingredients.api.capability.recipe.SpatialRecipeCapabilities;
+import dev.jurrejelle.spatialingredients.gtbridge.SpatialRecipes;
+
 import com.gregtechceu.gtceu.api.addon.GTAddon;
 import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
@@ -32,7 +35,12 @@ public class SpatialIngredientsAddon implements IGTAddon {
 
     @Override
     public void addRecipes(Consumer<FinishedRecipe> provider) {
-        // CustomRecipes.init(provider);
+        SpatialRecipes.init(provider);
+    }
+
+    @Override
+    public void registerRecipeCapabilities() {
+        SpatialRecipeCapabilities.init();
     }
 
     // If you have custom ingredient types, uncomment this & change to match your capability.

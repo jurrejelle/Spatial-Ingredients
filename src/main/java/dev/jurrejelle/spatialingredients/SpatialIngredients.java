@@ -1,5 +1,8 @@
 package dev.jurrejelle.spatialingredients;
 
+import dev.jurrejelle.spatialingredients.common.data.SpatialDatagen;
+import dev.jurrejelle.spatialingredients.common.data.SpatialMachines;
+
 import com.gregtechceu.gtceu.api.GTCEuAPI;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialEvent;
 import com.gregtechceu.gtceu.api.data.chemical.material.event.MaterialRegistryEvent;
@@ -31,6 +34,7 @@ public class SpatialIngredients {
     public static GTRegistrate REGISTRATE = GTRegistrate.create(SpatialIngredients.MOD_ID);
 
     public SpatialIngredients() {
+        SpatialIngredients.init();
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
@@ -50,6 +54,10 @@ public class SpatialIngredients {
         MinecraftForge.EVENT_BUS.register(this);
 
         REGISTRATE.registerRegistrate();
+    }
+
+    public static void init() {
+        SpatialDatagen.init();
     }
 
     private void commonSetup(final FMLCommonSetupEvent event) {
@@ -120,7 +128,7 @@ public class SpatialIngredients {
      * @param event
      */
     private void registerMachines(GTCEuAPI.RegisterEvent<ResourceLocation, MachineDefinition> event) {
-        // CustomMachines.init();
+        SpatialMachines.init();
     }
 
     /**
