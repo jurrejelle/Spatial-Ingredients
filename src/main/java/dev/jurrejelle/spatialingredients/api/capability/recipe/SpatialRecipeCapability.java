@@ -25,17 +25,12 @@ public class SpatialRecipeCapability extends RecipeCapability<BlockState> {
     public final static SpatialRecipeCapability CAP = new SpatialRecipeCapability();
 
     protected SpatialRecipeCapability() {
-        super("spatial", 0x5E2129FF, true, 10, SerializerBlockState.INSTANCE);
+        super("spatial", 0x5E2129FF, false, 5, SerializerBlockState.INSTANCE);
     }
 
     @Override
     public BlockState copyInner(BlockState content) {
         return content;
-    }
-
-    @Override
-    public BlockState copyWithModifier(BlockState content, ContentModifier modifier) {
-        return SpatialRecipeCapability.CAP.copyWithModifier(content, modifier);
     }
 
     @Override

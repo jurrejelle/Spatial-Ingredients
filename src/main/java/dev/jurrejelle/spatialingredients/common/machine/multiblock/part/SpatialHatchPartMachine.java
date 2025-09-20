@@ -1,5 +1,8 @@
 package dev.jurrejelle.spatialingredients.common.machine.multiblock.part;
 
+import com.gregtechceu.gtceu.api.capability.recipe.BlockStateRecipeCapability;
+import com.gregtechceu.gtceu.api.machine.feature.multiblock.IMultiController;
+import com.gregtechceu.gtceu.config.ConfigHolder;
 import dev.jurrejelle.spatialingredients.api.capability.recipe.SpatialRecipeCapability;
 
 import com.gregtechceu.gtceu.api.capability.recipe.IO;
@@ -18,6 +21,7 @@ import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -61,6 +65,10 @@ public class SpatialHatchPartMachine extends TieredIOPartMachine
         }
         return left;
     }
+    @Override
+    public void addedToController(IMultiController controller) {
+        super.addedToController(controller);
+    }
 
     @Override
     public @NotNull List<Object> getContents() {
@@ -74,7 +82,7 @@ public class SpatialHatchPartMachine extends TieredIOPartMachine
 
     @Override
     public RecipeCapability<BlockState> getCapability() {
-        return SpatialRecipeCapability.CAP;
+        return BlockStateRecipeCapability.CAP;
     }
 
     // GUI
