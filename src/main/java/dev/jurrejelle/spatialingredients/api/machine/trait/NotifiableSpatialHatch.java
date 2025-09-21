@@ -54,7 +54,7 @@ public class NotifiableSpatialHatch extends NotifiableRecipeHandlerTrait<Spatial
     private boolean consume() {
         Level level = getMachine().getHolder().level();
         BlockPos hatchPos = getMachine().getHolder().getCurrentPos();
-        BlockPos inFront = hatchPos.relative(getMachine().getFrontFacing());
+        BlockPos inFront = hatchPos.relative(getMachine().getFrontFacing()).offset(getMachine().getOffset());
         return level.setBlockAndUpdate(inFront, Blocks.AIR.defaultBlockState());
     }
 
