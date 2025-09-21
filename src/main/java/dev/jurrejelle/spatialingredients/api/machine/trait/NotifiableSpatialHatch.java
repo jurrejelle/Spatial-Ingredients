@@ -8,6 +8,7 @@ import com.gregtechceu.gtceu.api.machine.trait.NotifiableRecipeHandlerTrait;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import dev.jurrejelle.spatialingredients.api.capability.recipe.SpatialRecipeCapability;
 import dev.jurrejelle.spatialingredients.api.recipe.ingredient.SpatialIngredient;
+import dev.jurrejelle.spatialingredients.common.machine.multiblock.part.SpatialHatchPartMachine;
 import lombok.Getter;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
@@ -35,6 +36,10 @@ public class NotifiableSpatialHatch extends NotifiableRecipeHandlerTrait<Spatial
 
     }
 
+    @Override
+    public SpatialHatchPartMachine getMachine() {
+        return (SpatialHatchPartMachine) super.getMachine();
+    }
 
     private SpatialIngredient getBlock() {
         Level level = getMachine().getHolder().level();
@@ -42,7 +47,7 @@ public class NotifiableSpatialHatch extends NotifiableRecipeHandlerTrait<Spatial
             return SpatialIngredient.EMPTY;
         }
         BlockPos hatchPos = getMachine().getHolder().getCurrentPos();
-        BlockPos inFront = hatchPos.relative(getMachine().getFrontFacing());
+        BlockPos inFront = hatchPos.relative(getMachine().getFrontFacing()).offset(getMachine().getOffset());
         return new SpatialIngredient(level.getBlockState(inFront));
     }
 

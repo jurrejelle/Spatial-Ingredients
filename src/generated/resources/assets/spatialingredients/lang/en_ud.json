@@ -1,4 +1,6 @@
 {
   "block.spatialingredients.spatial_hatch": "ɥɔʇɐH ןɐıʇɐdS",
-  "spatialingredients.gui.spatial_hatch": "ɥɔʇɐH ןɐıʇɐdS"
+  "spatialingredients.gui.spatial_hatch": "ɥɔʇɐH ןɐıʇɐdS",
+  "spatialingredients.gui.spatial_hatch.offset": ":ʇǝsɟɟO",
+  "spatialingredients.gui.spatial_hatch.size": ":ǝzıS"
 }

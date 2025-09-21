@@ -1,4 +1,6 @@
 {
   "block.spatialingredients.spatial_hatch": "Spatial Hatch",
-  "spatialingredients.gui.spatial_hatch": "Spatial Hatch"
+  "spatialingredients.gui.spatial_hatch": "Spatial Hatch",
+  "spatialingredients.gui.spatial_hatch.offset": "Offset:",
+  "spatialingredients.gui.spatial_hatch.size": "Size:"
 }
