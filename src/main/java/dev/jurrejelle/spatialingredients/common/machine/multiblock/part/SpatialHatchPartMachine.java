@@ -82,7 +82,7 @@ public class SpatialHatchPartMachine extends TieredIOPartMachine
 
     @Override
     public RecipeCapability<BlockState> getCapability() {
-        return BlockStateRecipeCapability.CAP;
+        return SpatialRecipeCapability.CAP;
     }
 
     // GUI

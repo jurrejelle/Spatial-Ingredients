@@ -1,6 +1,5 @@
 package dev.jurrejelle.spatialingredients.gtbridge;
 
-import com.gregtechceu.gtceu.api.capability.recipe.BlockStateRecipeCapability;
 import dev.jurrejelle.spatialingredients.SpatialIngredients;
 import dev.jurrejelle.spatialingredients.api.capability.recipe.SpatialRecipeCapability;
 
@@ -19,7 +18,7 @@ public class SpatialRecipes {
         GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder(
                 SpatialIngredients.id("test"))
                 .inputItems(Items.STONE)
-                .input(BlockStateRecipeCapability.CAP, Blocks.DIRT.defaultBlockState())
+                .input(SpatialRecipeCapability.CAP, Blocks.DIRT.defaultBlockState())
                 .outputItems(Items.COBBLESTONE)
                 .duration(100)
                 .EUt(GTValues.VA[GTValues.LV])
