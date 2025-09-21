@@ -14,6 +14,7 @@ import com.gregtechceu.gtceu.api.pattern.FactoryBlockPattern;
 import com.gregtechceu.gtceu.api.pattern.Predicates;
 import com.gregtechceu.gtceu.common.data.GTRecipeTypes;
 import com.gregtechceu.gtceu.common.registry.GTRegistration;
+import dev.jurrejelle.spatialingredients.gtbridge.SpatialRecipeTypes;
 
 import static com.gregtechceu.gtceu.api.GTValues.ZPM;
 import static com.gregtechceu.gtceu.api.pattern.Predicates.blocks;
@@ -40,7 +41,7 @@ public class SpatialMachines {
     public static final MultiblockMachineDefinition LARGE_SPATIAL_REACTOR = GTRegistration.REGISTRATE
             .multiblock("large_spatial_reactor", WorkableElectricMultiblockMachine::new)
             .rotationState(RotationState.ALL)
-            .recipeType(GTRecipeTypes.LARGE_CHEMICAL_RECIPES)
+            .recipeType(SpatialRecipeTypes.LARGE_SPATIAL_RECIPES)
             .recipeModifiers(OC_PERFECT_SUBTICK, BATCH_MODE)
             .appearanceBlock(CASING_PTFE_INERT)
             .pattern(definition -> {

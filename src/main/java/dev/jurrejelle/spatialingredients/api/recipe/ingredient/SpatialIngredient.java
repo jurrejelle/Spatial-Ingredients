@@ -3,33 +3,40 @@ package dev.jurrejelle.spatialingredients.api.recipe.ingredient;
 import com.gregtechceu.gtceu.api.recipe.content.IContentSerializer;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
+import dev.jurrejelle.spatialingredients.SpatialIngredients;
 import lombok.Getter;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 public class SpatialIngredient {
-    private static final Logger LOGGER = LogManager.getLogger();
-
     public static final SpatialIngredient EMPTY = new SpatialIngredient(Blocks.AIR.defaultBlockState());
 
     public static final Codec<SpatialIngredient> CODEC = RecordCodecBuilder.create(instance -> instance.group(
             BlockState.CODEC.fieldOf("blockstate").forGetter(SpatialIngredient::getBlockstate)
     ).apply(instance, SpatialIngredient::new));
 
-    @Getter
+    private BlockState getBlockstate() {
+        if(blockstate == null){
+            SpatialIngredients.LOGGER.error("Tried to get null blockstate!");
+        }
+        return blockstate;
+    }
+
     private final BlockState blockstate;
 
     public SpatialIngredient(BlockState blockstate) {
+        if(blockstate == null){
+            SpatialIngredients.LOGGER.error("SpatialIngredient should never be initialized with null blockstate");
+            this.blockstate = Blocks.AIR.defaultBlockState();
+            return;
+        }
         this.blockstate = blockstate;
     }
 
     public SpatialIngredient copy() {
-        Tag tag = CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow(false, LOGGER::error);
-        return CODEC.decode(NbtOps.INSTANCE, tag).getOrThrow(false, LOGGER::error).getFirst();
+        Tag tag = CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow(false, SpatialIngredients.LOGGER::error);
+        return CODEC.decode(NbtOps.INSTANCE, tag).getOrThrow(false, SpatialIngredients.LOGGER::error).getFirst();
     }
 
     public static final class Serializer implements IContentSerializer<SpatialIngredient> {
@@ -55,7 +62,7 @@ public class SpatialIngredient {
 
         @Override
         public Codec<SpatialIngredient> codec() {
-            return null;
+            return CODEC;
         }
     }
 }
