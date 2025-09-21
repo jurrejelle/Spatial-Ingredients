@@ -45,6 +45,8 @@ public class SpatialIngredient {
         public SpatialIngredient of(Object o) {
             if (o instanceof BlockState state) {
                 return new SpatialIngredient(state);
+            } else if (o instanceof SpatialIngredient spatialIngredient) {
+                return spatialIngredient;
             }
             return SpatialIngredient.EMPTY;
         }
