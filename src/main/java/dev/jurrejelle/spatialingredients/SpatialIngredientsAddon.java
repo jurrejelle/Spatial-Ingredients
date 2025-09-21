@@ -2,6 +2,7 @@ package dev.jurrejelle.spatialingredients;
 
 import com.gregtechceu.gtceu.api.recipe.lookup.ingredient.MapIngredientTypeManager;
 import dev.jurrejelle.spatialingredients.api.capability.recipe.SpatialRecipeCapabilities;
+import dev.jurrejelle.spatialingredients.api.recipe.ingredient.SpatialIngredient;
 import dev.jurrejelle.spatialingredients.api.recipe.lookup.MapSpatialIngredient;
 import dev.jurrejelle.spatialingredients.gtbridge.SpatialRecipes;
 
@@ -10,7 +11,6 @@ import com.gregtechceu.gtceu.api.addon.IGTAddon;
 import com.gregtechceu.gtceu.api.registry.registrate.GTRegistrate;
 
 import net.minecraft.data.recipes.FinishedRecipe;
-import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.function.Consumer;
 
@@ -25,7 +25,7 @@ public class SpatialIngredientsAddon implements IGTAddon {
 
     @Override
     public void initializeAddon() {
-        MapIngredientTypeManager.registerMapIngredient(BlockState.class, MapSpatialIngredient::convertToMapIngredient);
+        MapIngredientTypeManager.registerMapIngredient(SpatialIngredient.class, MapSpatialIngredient::convertToMapIngredient);
     }
 
     @Override

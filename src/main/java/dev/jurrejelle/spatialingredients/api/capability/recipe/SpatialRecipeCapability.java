@@ -1,17 +1,14 @@
 package dev.jurrejelle.spatialingredients.api.capability.recipe;
 
+import dev.jurrejelle.spatialingredients.api.recipe.ingredient.SpatialIngredient;
 import dev.jurrejelle.spatialingredients.api.recipe.lookup.MapSpatialIngredient;
 
 import com.gregtechceu.gtceu.api.capability.recipe.RecipeCapability;
 import com.gregtechceu.gtceu.api.recipe.GTRecipe;
 import com.gregtechceu.gtceu.api.recipe.content.Content;
-import com.gregtechceu.gtceu.api.recipe.content.ContentModifier;
-import com.gregtechceu.gtceu.api.recipe.content.SerializerBlockState;
 import com.gregtechceu.gtceu.api.recipe.lookup.ingredient.AbstractMapIngredient;
 
 import com.lowdragmc.lowdraglib.gui.widget.WidgetGroup;
-
-import net.minecraft.world.level.block.state.BlockState;
 
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import org.apache.commons.lang3.mutable.MutableInt;
@@ -20,23 +17,23 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collection;
 import java.util.List;
 
-public class SpatialRecipeCapability extends RecipeCapability<BlockState> {
+public class SpatialRecipeCapability extends RecipeCapability<SpatialIngredient> {
 
     public final static SpatialRecipeCapability CAP = new SpatialRecipeCapability();
 
     protected SpatialRecipeCapability() {
-        super("spatial", 0x5E2129FF, false, 5, SerializerBlockState.INSTANCE);
+        super("spatial", 0x5E2129FF, false, 5, SpatialIngredient.Serializer.INSTANCE);
     }
 
     @Override
-    public BlockState copyInner(BlockState content) {
-        return content;
+    public SpatialIngredient copyInner(SpatialIngredient content) {
+        return content.copy();
     }
 
     @Override
     public @Nullable List<AbstractMapIngredient> getDefaultMapIngredient(Object ingredient) {
         List<AbstractMapIngredient> ingredients = new ObjectArrayList<>(1);
-        if (ingredient instanceof BlockState block) ingredients.add(new MapSpatialIngredient(block));
+        if (ingredient instanceof SpatialIngredient spatialIngredient) ingredients.add(new MapSpatialIngredient(spatialIngredient));
         return ingredients;
     }
 
