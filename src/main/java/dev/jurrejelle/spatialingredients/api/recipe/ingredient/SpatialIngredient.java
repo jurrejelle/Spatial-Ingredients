@@ -4,7 +4,6 @@ import com.gregtechceu.gtceu.api.recipe.content.IContentSerializer;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.jurrejelle.spatialingredients.SpatialIngredients;
-import lombok.Getter;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
 import net.minecraft.world.level.block.Blocks;
@@ -47,7 +46,7 @@ public class SpatialIngredient {
             if (o instanceof BlockState state) {
                 return new SpatialIngredient(state);
             }
-            return null;
+            return SpatialIngredient.EMPTY;
         }
 
         @Override

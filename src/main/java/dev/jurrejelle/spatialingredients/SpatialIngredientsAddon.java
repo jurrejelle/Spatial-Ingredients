@@ -4,7 +4,6 @@ import com.gregtechceu.gtceu.api.recipe.lookup.ingredient.MapIngredientTypeManag
 import dev.jurrejelle.spatialingredients.api.capability.recipe.SpatialRecipeCapabilities;
 import dev.jurrejelle.spatialingredients.api.recipe.ingredient.SpatialIngredient;
 import dev.jurrejelle.spatialingredients.api.recipe.lookup.MapSpatialIngredient;
-import dev.jurrejelle.spatialingredients.gtbridge.SpatialRecipeTypes;
 import dev.jurrejelle.spatialingredients.gtbridge.SpatialRecipes;
 
 import com.gregtechceu.gtceu.api.addon.GTAddon;
