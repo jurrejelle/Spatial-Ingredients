@@ -38,6 +38,12 @@ public class SpatialIngredient {
         return CODEC.decode(NbtOps.INSTANCE, tag).getOrThrow(false, SpatialIngredients.LOGGER::error).getFirst();
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        if(!(obj instanceof SpatialIngredient other)) return false;
+        return other.blockstate.equals(this.blockstate);
+    }
+
     public static final class Serializer implements IContentSerializer<SpatialIngredient> {
         public static final Serializer INSTANCE = new Serializer();
 

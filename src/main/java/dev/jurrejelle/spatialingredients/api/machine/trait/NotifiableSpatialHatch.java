@@ -65,7 +65,7 @@ public class NotifiableSpatialHatch extends NotifiableRecipeHandlerTrait<Spatial
                 }
             }
         }
-        return left;
+        return left.isEmpty() ? null : left;
     }
 
     @Override

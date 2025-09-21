@@ -13,27 +13,18 @@ import net.minecraft.world.level.block.Blocks;
 
 import java.util.function.Consumer;
 
+import static dev.jurrejelle.spatialingredients.gtbridge.SpatialRecipeTypes.LARGE_SPATIAL_RECIPES;
+
 public class SpatialRecipes {
 
     public static void init(Consumer<FinishedRecipe> provider) {
-        // ONCE THIS SERIALIZES,
-        var finished = SpatialRecipeTypes.LARGE_SPATIAL_RECIPES.recipeBuilder(
-                        SpatialIngredients.id("test"))
-                .inputItems(Items.STONE)
-                .input(SpatialRecipeCapability.CAP, new SpatialIngredient(Blocks.DIRT.defaultBlockState()))
-                .outputItems(Items.COBBLESTONE)
-                .duration(100)
-                .EUt(GTValues.VA[GTValues.LV])
-                .build();
-        var json = finished.serializeRecipe();
-        /*
-        GTRecipeTypes.LARGE_CHEMICAL_RECIPES.recipeBuilder(
+        LARGE_SPATIAL_RECIPES.recipeBuilder(
                 SpatialIngredients.id("test"))
                 .inputItems(Items.STONE)
                 .input(SpatialRecipeCapability.CAP, new SpatialIngredient(Blocks.DIRT.defaultBlockState()))
                 .outputItems(Items.COBBLESTONE)
                 .duration(100)
                 .EUt(GTValues.VA[GTValues.LV])
-                .save(provider);*/
+                .save(provider);
     }
 }
