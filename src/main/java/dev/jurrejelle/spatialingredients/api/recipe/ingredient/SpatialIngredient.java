@@ -4,8 +4,11 @@ import com.gregtechceu.gtceu.api.recipe.content.IContentSerializer;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import dev.jurrejelle.spatialingredients.SpatialIngredients;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Vec3i;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 public class SpatialIngredient {
@@ -36,6 +39,14 @@ public class SpatialIngredient {
     public SpatialIngredient copy() {
         Tag tag = CODEC.encodeStart(NbtOps.INSTANCE, this).getOrThrow(false, SpatialIngredients.LOGGER::error);
         return CODEC.decode(NbtOps.INSTANCE, tag).getOrThrow(false, SpatialIngredients.LOGGER::error).getFirst();
+    }
+
+    public Vec3i getSize() {
+        return new Vec3i(1, 1, 1);
+    }
+
+    public boolean place(Level level, BlockPos pos) {
+        return level.setBlockAndUpdate(pos, getBlockstate());
     }
 
     @Override
